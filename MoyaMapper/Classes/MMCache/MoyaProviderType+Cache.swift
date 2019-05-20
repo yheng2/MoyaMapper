@@ -27,13 +27,13 @@ public extension MoyaProviderType {
         completion: @escaping Moya.Completion
     ) -> Cancellable {
         
-        let cache = MMCache.shared.fetchResponseCache(target: target)
+        let cache = MMCache.shared.fetchResponseCache(target: target, cacheKey: cacheType)
         
         if alwaysFetchCache && cache != nil {
             completion(Result(value: cache!))
         } else {
             if MMCache.shared.isNoRecord(target, cacheType: cacheType) {
-                MMCache.shared.record(target)
+                MMCache.shared.record(target, cacheType: cacheType)
                 if cache != nil {
                     completion(Result(value: cache!))
                 }
@@ -43,7 +43,7 @@ public extension MoyaProviderType {
         return self.request(target, callbackQueue: callbackQueue, progress: progress) { result in
             if let resp = try? result.value?.filterSuccessfulStatusCodes(),
                 resp != nil { // 更新缓存
-                MMCache.shared.cacheResponse(resp!, target: target)
+                MMCache.shared.cacheResponse(resp!, target: target, cacheKey: cacheType)
             }
             completion(result)
         }

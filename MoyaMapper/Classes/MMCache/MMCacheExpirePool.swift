@@ -37,7 +37,7 @@ class MMCacheExpirePool {
     
     func updateExpireTimeStamp(_ target: TargetType, cacheType: MMCache.CacheKeyType = .default) {
         /// Save key and value(timestamp) into pool
-        pool[target.fetchCacheKey(cacheType)] = timeStamp
+        pool[target.fetchCacheKey(cacheType)] = "\(timeStamp)"
     }
     
     

@@ -17,9 +17,23 @@ class MMCacheExpirePool {
     /// value: expiring timestamp
     var pool = [String: String]()
    
+    var timeStamp: Int {
+        get {
+            return Int((Date().timeIntervalSince1970 * 1000.0).rounded())
+        }
+    }
     
-    func checkAlreadyExpired(_ target: Target, cacheType: MMCache.CacheKeyType = .default) -> Bool {
-        return true
+    func checkAlreadyExpired(_ target: TargetType, cacheType: MMCache.CacheKeyType = .default) -> Bool {
+        if let expireTimeStamp = pool[target.fetchCacheKey(cacheType)] {
+            return timeStamp >= (Int(expireTimeStamp) ?? 0)
+        } else {
+            return false
+        }
+    }
+    
+    func updateExpireTimeStamp(_ target: TargetType, cacheType: MMCache.CacheKeyType = .default) {
+        /// Save key and value(timestamp) into pool
+        pool[target.fetchCacheKey(cacheType)] = timeStamp
     }
     
     

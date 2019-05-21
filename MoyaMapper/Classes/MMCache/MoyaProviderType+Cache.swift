@@ -54,8 +54,7 @@ public extension MoyaProviderType {
                 completion(result)
             }
         } else {
-            
-            return
+            return SimpleCancellable()
         }
     }
 }

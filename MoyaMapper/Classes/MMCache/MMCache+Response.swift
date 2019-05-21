@@ -109,4 +109,13 @@ public extension MMCache {
         }
         catch { return false }
     }
+    
+    @discardableResult
+    static func discardAllResponseCache() -> Bool {
+        do {
+            try MMCache.shared.responseStorage?.removeAll()
+            return true
+        }
+        catch { return false }
+    }
 }

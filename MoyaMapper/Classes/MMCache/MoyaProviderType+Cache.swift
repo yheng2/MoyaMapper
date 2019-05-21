@@ -50,7 +50,7 @@ public extension MoyaProviderType {
         }
         
         let poolManager = MMCacheExpirePool.shared
-        if poolManager.checkAlreadyExpired(target, cacheType: cacheType) || cache == nil {
+//        if poolManager.checkAlreadyExpired(target, cacheType: cacheType) || cache == nil {
         
             return self.request(target, callbackQueue: callbackQueue, progress: progress) { result in
                 if let resp = try? result.value?.filterSuccessfulStatusCodes(),
@@ -60,8 +60,8 @@ public extension MoyaProviderType {
                 }
                 completion(result)
             }
-        } else {
-            return SimpleCancellableClass()
-        }
+//        } else {
+//            return SimpleCancellableClass()
+//        }
     }
 }

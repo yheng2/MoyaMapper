@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		A209E4302293ACE7004EA431 /* MMCacheExpirePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A209E42F2293ACE7004EA431 /* MMCacheExpirePool.swift */; };
 		FD3ADA2E2243DCB8005F6715 /* MMJSONDecodingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3ADA1E2243DCB8005F6715 /* MMJSONDecodingStorage.swift */; };
 		FD3ADA2F2243DCB8005F6715 /* MMJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3ADA1F2243DCB8005F6715 /* MMJSONDecoder.swift */; };
 		FD3ADA302243DCB8005F6715 /* MMJSONDecoder+DecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3ADA202243DCB8005F6715 /* MMJSONDecoder+DecodingError.swift */; };
@@ -135,6 +136,7 @@
 		607FACE51AFB9204008FA782 /* MoyaMapper_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoyaMapper_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		A209E42F2293ACE7004EA431 /* MMCacheExpirePool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMCacheExpirePool.swift; sourceTree = "<group>"; };
 		FD3ADA1E2243DCB8005F6715 /* MMJSONDecodingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMJSONDecodingStorage.swift; sourceTree = "<group>"; };
 		FD3ADA1F2243DCB8005F6715 /* MMJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMJSONDecoder.swift; sourceTree = "<group>"; };
 		FD3ADA202243DCB8005F6715 /* MMJSONDecoder+DecodingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MMJSONDecoder+DecodingError.swift"; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				FD846F622233AF100038A715 /* TransformerFactory+Extensions.swift */,
 				FD846F632233AF100038A715 /* MMCache+Modelable.swift */,
 				FD846F642233AF100038A715 /* TargetType+Cache.swift */,
+				A209E42F2293ACE7004EA431 /* MMCacheExpirePool.swift */,
 			);
 			path = MMCache;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -851,6 +855,7 @@
 				FD846F0E2233A5B90038A715 /* Parameters.swift in Sources */,
 				FD846F1C2233A5B90038A715 /* MyModel.swift in Sources */,
 				FD846F162233A5B90038A715 /* ViewController.swift in Sources */,
+				A209E4302293ACE7004EA431 /* MMCacheExpirePool.swift in Sources */,
 				FD846F0F2233A5B90038A715 /* MoyaSugarProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

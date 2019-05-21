@@ -28,8 +28,9 @@ class MMCacheExpirePool {
     }
     
     func checkAlreadyExpired(_ target: TargetType, cacheType: MMCache.CacheKeyType = .default) -> Bool {
-        if let expireTimeStamp = pool[target.fetchCacheKey(cacheType)] {
-            return timeStamp >= (Int(expireTimeStamp) ?? 0)
+        if pool[target.fetchCacheKey(cacheType)] != nil {
+            let expireTimeStamp = pool[target.fetchCacheKey(cacheType)]
+            return timeStamp >= (Int(pool[target.fetchCacheKey(cacheType)]) ?? 0)
         } else {
             return true
         }

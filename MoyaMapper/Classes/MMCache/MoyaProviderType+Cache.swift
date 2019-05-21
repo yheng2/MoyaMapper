@@ -8,6 +8,13 @@
 import Moya
 import Result
 
+internal class SimpleCancellableClass: Cancellable {
+    var isCancelled = false
+    func cancel() {
+        isCancelled = true
+    }
+}
+
 public extension MoyaProviderType {
     /**
      缓存网络请求:
@@ -54,7 +61,7 @@ public extension MoyaProviderType {
                 completion(result)
             }
         } else {
-            return Cancellable()
+            return SimpleCancellableClass()
         }
     }
 }

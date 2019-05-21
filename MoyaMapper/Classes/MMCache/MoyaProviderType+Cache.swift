@@ -26,16 +26,20 @@ public extension MoyaProviderType {
      
      */
     
+    func haha() {
+        print("haha")
+    }
+    
     func cacheRequest(
         _ target: Target,
         alwaysFetchCache: Bool = false,
         cacheType: MMCache.CacheKeyType = .default,
         callbackQueue: DispatchQueue? = nil,
         progress: Moya.ProgressBlock? = nil,
-        expireInSec: Int = 0,
+//        expireInSec: Int = 0,
         completion: @escaping Moya.Completion
     ) -> Cancellable {
-        print("111")
+        
         let cache = MMCache.shared.fetchResponseCache(target: target, cacheKey: cacheType)
         
         if alwaysFetchCache && cache != nil {
@@ -48,9 +52,8 @@ public extension MoyaProviderType {
                 }
             }
         }
-        print("222")
-        let poolManager = MMCacheExpirePool.shared
-        print("333")
+        
+//        let poolManager = MMCacheExpirePool.shared
 //        if poolManager.checkAlreadyExpired(target, cacheType: cacheType) || cache == nil {
         
             return self.request(target, callbackQueue: callbackQueue, progress: progress) { result in

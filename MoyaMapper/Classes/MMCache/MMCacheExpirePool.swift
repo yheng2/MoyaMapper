@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import Moya
+#if !COCOAPODS
+import MoyaMapper
+#endif
 
 class MMCacheExpirePool {
     static let shared = MMCacheExpirePool()

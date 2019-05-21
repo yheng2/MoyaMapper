@@ -31,7 +31,7 @@ class MMCacheExpirePool {
         if let expireTimeStamp = pool[target.fetchCacheKey(cacheType)] {
             return timeStamp >= (Int(expireTimeStamp) ?? 0)
         } else {
-            return false
+            return true
         }
     }
     

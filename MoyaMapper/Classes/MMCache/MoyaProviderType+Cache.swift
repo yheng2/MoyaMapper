@@ -18,12 +18,14 @@ public extension MoyaProviderType {
      - 适用于APP首页数据缓存
      
      */
+    
     func cacheRequest(
         _ target: Target,
         alwaysFetchCache: Bool = false,
         cacheType: MMCache.CacheKeyType = .default,
         callbackQueue: DispatchQueue? = nil,
         progress: Moya.ProgressBlock? = nil,
+        expireInSec: Int = 0,
         completion: @escaping Moya.Completion
     ) -> Cancellable {
         
@@ -40,12 +42,20 @@ public extension MoyaProviderType {
             }
         }
         
-        return self.request(target, callbackQueue: callbackQueue, progress: progress) { result in
-            if let resp = try? result.value?.filterSuccessfulStatusCodes(),
-                resp != nil { // 更新缓存
-                MMCache.shared.cacheResponse(resp!, target: target, cacheKey: cacheType)
+        let poolManager = MMCacheExpirePool.shared
+        if poolManager.checkAlreadyExpired(target, cacheType: cacheType) || cache == nil {
+        
+            return self.request(target, callbackQueue: callbackQueue, progress: progress) { result in
+                if let resp = try? result.value?.filterSuccessfulStatusCodes(),
+                    resp != nil { // 更新缓存
+                    MMCache.shared.cacheResponse(resp!, target: target, cacheKey: cacheType)
+                    poolManager.updateExpireTimeStamp(target, cacheType: cacheType, expireInSec: expireInSec)
+                }
+                completion(result)
             }
-            completion(result)
+        } else {
+            
+            return
         }
     }
 }

@@ -114,6 +114,8 @@ public extension MMCache {
     static func discardAllResponseCache() -> Bool {
         do {
             try MMCache.shared.responseStorage?.removeAll()
+            /// Clear cache data expiration information
+            MMCacheExpirePool.shared.pool = [String: String]()
             return true
         }
         catch { return false }

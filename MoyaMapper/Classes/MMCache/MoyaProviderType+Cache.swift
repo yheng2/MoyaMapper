@@ -43,9 +43,6 @@ public extension MoyaProviderType {
         } else {
             if MMCache.shared.isNoRecord(target, cacheType: cacheType) {
                 MMCache.shared.record(target, cacheType: cacheType)
-//                if cache != nil {
-//                    completion(Result(value: cache!))
-//                }
             }
         }
         

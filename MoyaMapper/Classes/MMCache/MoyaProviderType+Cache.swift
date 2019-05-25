@@ -66,6 +66,7 @@ public extension MoyaProviderType {
     func removeResponseCache( _ target: Target, cacheType: MMCache.CacheKeyType = .default) -> Bool {
         do {
             try MMCache.shared.responseStorage?.removeObject(forKey: target.fetchCacheKey(cacheType))
+            MMCacheExpirePool.shared.updateExpireTimeStamp(target, cacheType: cacheType)
             return true
         }
         catch { return false }

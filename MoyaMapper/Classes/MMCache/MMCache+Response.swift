@@ -122,7 +122,7 @@ public extension MMCache {
     }
     
     @discardableResult
-    static func removeResponseCache(target: TargetType, cacheKey: CacheKeyType = .default) -> Bool {
+    static func removeResponseCache(target: Target, cacheKey: CacheKeyType = .default) -> Bool {
         do {
             try MMCache.shared.responseStorage?.removeObject(forKey: target.fetchCacheKey(cacheKey))
             return true

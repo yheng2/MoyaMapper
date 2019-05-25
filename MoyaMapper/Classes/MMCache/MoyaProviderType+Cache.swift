@@ -63,7 +63,7 @@ public extension MoyaProviderType {
     }
     
     @discardableResult
-    static func removeResponseCache( _ target: Target, cacheType: MMCache.CacheKeyType = .default) -> Bool {
+    func removeResponseCache( _ target: Target, cacheType: MMCache.CacheKeyType = .default) -> Bool {
         do {
             try MMCache.shared.responseStorage?.removeObject(forKey: target.fetchCacheKey(cacheType))
             return true
